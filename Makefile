@@ -6,22 +6,23 @@
 #    By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/04 17:58:02 by bkaztaou          #+#    #+#              #
-#    Updated: 2022/11/04 18:34:13 by bkaztaou         ###   ########.fr        #
+#    Updated: 2022/11/04 19:04:05 by bkaztaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC=gcc
-FLAGS=-Wall -Wextra -Werror
-LIB=libft.a
-SRC=$(wildcard .c)
+CC=cc
+CFLAGS=-Wall -Wextra -Werror
+SRC=$(wildcard *.c)
 OBJ=$(patsubst %.c, %.o, $(SRC))
+LIB=libft.a
+
 all:$(LIB)
 
 $(LIB):$(OBJ)
-    ar -rcs $(LIB).o
+	ar -csr $(LIB) *.o
 
 %.o:%.c
-    $(CC) $(FLAGS) -c $^ -o $@
+	$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
-    rm -f *.o $(LIB)
+	rm -rf *.o $(LIB)
