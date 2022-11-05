@@ -6,7 +6,7 @@
 /*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 01:11:38 by bkaztaou          #+#    #+#             */
-/*   Updated: 2022/11/05 01:28:37 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2022/11/05 04:07:30 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_calloc(0, sizeof(char)));
 	if (len > (s_len - start))
 		len = s_len - start;
-	str = ft_calloc(len + 1 ,sizeof(char));
+	str = ft_calloc(len + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	ft_memmove(str, s + start, len);
