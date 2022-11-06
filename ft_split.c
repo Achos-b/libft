@@ -6,7 +6,7 @@
 /*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 04:11:05 by bkaztaou          #+#    #+#             */
-/*   Updated: 2022/11/05 04:53:04 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2022/11/06 03:54:40 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ static size_t	ft_word_len(char const *str, char c)
 	return (len);
 }
 
+char	**ft_terminate(char **str, size_t index)
+{
+	str[index] = 0;
+	return (str);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
@@ -74,6 +80,5 @@ char	**ft_split(char const *s, char c)
 			str[i][k++] = s[j++];
 		str[i][k] = '\0';
 	}
-	str[i] = 0;
-	return (str);
+	return (ft_terminate(str, i));
 }
