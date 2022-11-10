@@ -6,7 +6,7 @@
 /*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:11:50 by bkaztaou          #+#    #+#             */
-/*   Updated: 2022/11/04 18:14:51 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2022/11/09 20:21:18 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	ft_putnbr_fd(int n, int fd)
 
 	num = (unsigned int)n;
 	if (n < 0)
+	{
 		num = -n;
+		ft_putchar_fd('-', fd);
+	}
 	if (num >= 10)
 	{
 		ft_putnbr_fd(num / 10, fd);

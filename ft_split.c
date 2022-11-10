@@ -6,7 +6,7 @@
 /*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 04:11:05 by bkaztaou          #+#    #+#             */
-/*   Updated: 2022/11/06 03:54:40 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2022/11/10 05:10:16 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static size_t	ft_word_len(char const *str, char c)
 
 char	**ft_terminate(char **str, size_t index)
 {
-	str[index] = 0;
+	str[index] = NULL;
 	return (str);
 }
 
@@ -63,19 +63,19 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	str = malloc(sizeof(char *) * ft_count_words(s, c) + 1);
+	str = malloc(sizeof(str) * (ft_count_words(s, c) + 1));
 	if (!str)
 		return (NULL);
 	i = -1;
 	j = 0;
 	while (++i < ft_count_words(s, c))
 	{
-		str[i] = malloc(sizeof(char) * ft_word_len(&s[j], c) + 1);
+		str[i] = malloc(sizeof(char) * (ft_word_len(&s[j], c) + 1));
 		if (!str[i])
 			return (NULL);
-		k = 0;
 		while (s[j] == c)
 			j++;
+		k = 0;
 		while (s[j] && s[j] != c)
 			str[i][k++] = s[j++];
 		str[i][k] = '\0';
