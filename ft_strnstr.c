@@ -6,7 +6,7 @@
 /*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 00:55:53 by bkaztaou          #+#    #+#             */
-/*   Updated: 2022/11/10 06:01:48 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2022/11/11 03:24:29 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,25 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	i;
 	size_t	j;
 	size_t	k;
-	size_t	needle_len;
+	int		found;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	if ((int)len < 0)
-		len = ft_strlen(haystack);
-	needle_len = ft_strlen(needle);
-	if (!needle_len)
+	i = -1;
+	found = 1;
+	if (!ft_strlen(needle))
 		return ((char *)haystack);
-	while (i < len && haystack[i] && needle[j])
+	while (++i < len && haystack[i])
 	{
+		j = 0;
 		if (haystack[i] == needle[j])
 		{
-			j++;
 			k = i;
+			found = 1;
+			while (haystack[k] && needle[j] && k < len)
+				if (haystack[k++] != needle[j++])
+					found = 0;
+			if (found && needle[j] == '\0')
+				return ((char *)&haystack[i]);
 		}
-		else
-			j = 0;
-		i++;
 	}
-	if (j == needle_len)
-		return ((char *)&haystack[k - (needle_len - 1)]);
 	return (NULL);
 }
